@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寒凛 · 个人介绍</title>
+
+    <!-- 字体：自托管镜像，失败时回落到系统中文字体栈 -->
+    <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+
+    <style>
+        /* ===== 1. 基础变量与重置 ===== */
+        :root {
+            --accent: #2f6fed; /* 主色：改这一个值就能换整页强调色 */
+            --accent-soft: #eef3fe; /* 主色的浅色底 */
+            --text: #1b1f24; /* 正文 */
+            --text-sub: #6b7280; /* 次要文字 */
+            --line: #e8eaee; /* 分隔线 */
+            --bg: #ffffff;
+            --max: 760px; /* 内容最大宽度 */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== 2. 版心 ===== */
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== 3. 顶部身份区 ===== */
+        .hero {
+            padding: 72px 0 56px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        /* 头像：方形照片裁成圆形 */
+        .avatar {
+            flex: 0 0 auto;
+            width: 104px;
+            height: 104px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: 50% 28%; /* 取脸部区域，避免裁到下巴 */
+            border: 3px solid #f1f4fb;
+            background: var(--accent-soft);
+        }
+
+        .hero-text {
+            min-width: 0;
+        }
+
+        .name {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+
+        /* 英文名/别名，跟在中文名后面 */
+        .name-en {
+            margin-left: 10px;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #b4bac4;
+            vertical-align: 2px;
+        }
+
+        /* 一句话简介 */
+        .tagline {
+            margin-top: 8px;
+            color: var(--text-sub);
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        /* 标题下的小横线点缀 */
+        .rule {
+            width: 36px;
+            height: 3px;
+            margin-top: 18px;
+            border-radius: 2px;
+            background: var(--accent);
+        }
+
+        /* ===== 4. 内容区块 ===== */
+        .section {
+            padding: 44px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+            .section:last-of-type {
+                border-bottom: none;
+            }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+            /* 标题前的小方块 */
+            .section-title::before {
+                content: "";
+                width: 6px;
+                height: 6px;
+                border-radius: 1px;
+                background: var(--accent);
+            }
+
+        .about p {
+            color: #33383f;
+            font-size: 16px;
+            line-height: 1.95;
+        }
+
+            /* 段落之间留白 */
+            .about p + p {
+                margin-top: 16px;
+            }
+
+        /* ===== 5. 基本信息（小字两列） ===== */
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px 32px;
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px dashed var(--line);
+        }
+
+        .fact {
+            display: flex;
+            gap: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+            .fact dt {
+                flex: 0 0 64px;
+                color: #9aa1ab;
+                font-weight: 300;
+            }
+
+            .fact dd {
+                color: #3c4249;
+                min-width: 0;
+            }
+
+        /* ===== 6. 技能标签 ===== */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 7px 16px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: 14px;
+            color: #3c4249;
+            background: #fff;
+            transition: color .2s, border-color .2s, background .2s;
+        }
+
+            .tag:hover {
+                color: var(--accent);
+                border-color: #c7d6fb;
+                background: var(--accent-soft);
+            }
+
+        /* ===== 7. 页脚 ===== */
+        .footer {
+            padding: 32px 0 64px;
+            color: #9aa1ab;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        /* ===== 8. 入场动画（轻微，不做花哨动效） ===== */
+        .fade {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeUp .7s cubic-bezier(.2,.7,.3,1) forwards;
+        }
+
+            .fade:nth-child(2) {
+                animation-delay: .12s;
+            }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+        }
+
+        /* ===== 9. 响应式：窄屏头像上移，信息改单列 ===== */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 52px 0 40px;
+            }
+
+            .hero-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .avatar {
+                width: 84px;
+                height: 84px;
+            }
+
+            .name {
+                font-size: 25px;
+            }
+
+            .name-en {
+                display: block;
+                margin: 6px 0 0;
+            }
+
+            .section {
+                padding: 36px 0;
+            }
+
+            .about p {
+                font-size: 15px;
+            }
+
+            .facts {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <!-- ===== 顶部身份区 ===== -->
+        <header class="hero">
+            <div class="hero-inner">
+                <img class="avatar" src="https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/VsFSbz0rLoU2YmxPEgQcZwzNnOc" alt="寒凛的头像">
+
+                <div class="hero-text">
+                    <h1 class="name">寒凛<span class="name-en">HANLIN</span></h1>
+                    <p class="tagline">浙江人，计算机方向大一学生，写前端，也在往方向人工智能走</p>
+                    <div class="rule" aria-hidden="true"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== 关于我 ===== -->
+        <section class="section fade" id="about">
+            <h2 class="section-title">关于我</h2>
+            <div class="about">
+                <p>
+                    寒凛，在中国民航大学读大一，计算机方向。日常主要学着用 Python 处理点数据；
+                    性格偏 INTP，习惯先把问题想清楚再动手，喜欢把一个项目或任务一点点调到顺手为止。
+                </p>
+                <p>
+                    白天上课写作业，缝隙里翻技术文档，晚上固定运动，睡前游玩小游戏或看小说。
+                    最近在补前端工程化的内容，同时把数学基础重新捡起来，为考研和人工智能方向做准备。
+                </p>
+            </div>
+
+            <!-- 基本信息：一项一个 .fact，可增删 -->
+            <dl class="facts">
+                <div class="fact"><dt>身份</dt><dd>大一本科在读</dd></div>
+                <div class="fact"><dt>方向</dt><dd>计算机</dd></div>
+                <div class="fact"><dt>性格</dt><dd>INTP</dd></div>
+                <div class="fact"><dt>目标</dt><dd>考研，往 AI 方向做科研</dd></div>
+            </dl>
+        </section>
+
+        <!-- ===== 技能 / 擅长领域 ===== -->
+        <section class="section fade" id="skills">
+            <h2 class="section-title">技能 / 喜好</h2>
+            <div class="skills">
+                <!-- 每一项技能一个 <span class="tag">，按需增删 -->
+                <span class="tag">HTML / CSS</span>
+                <span class="tag">羽毛球</span>
+                <span class="tag">Python</span>
+                <span class="tag">绘画</span>
+                <span class="tag">二次元</span>
+                <span class="tag">游戏</span>
+            </div>
+        </section>
+
+        <!-- ===== 页脚 ===== -->
+        <footer class="footer">
+            © <span id="year">2026</span> 寒凛
+        </footer>
+
+    </div>
+
+    <script>
+        // 页脚年份自动更新，无需手动改
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
